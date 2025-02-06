@@ -28,8 +28,6 @@ function App() {
         </Route>
         <Route path="/addblog" element={<AddBlogPage/>}/>
       </Routes>
-
-      {/* Common Footer for all pages */}
       <Footer />
     </Router>
   );
