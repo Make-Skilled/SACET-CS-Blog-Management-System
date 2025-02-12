@@ -1,7 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setIsLoggedIn(false);
+    navigate('/login');
+  };
+
   return (
     <>
       <style jsx>{`
@@ -34,6 +48,20 @@ const Navbar = () => {
           background-color: var(--rich-black) !important;
           box-shadow: 0 2px 10px rgba(255, 0, 51, 0.1);
         }
+
+        .auth-button {
+          background-color: var(--primary-red);
+          color: white;
+          border: none;
+          padding: 8px 16px;
+          border-radius: 4px;
+          transition: all 0.3s ease;
+        }
+
+        .auth-button:hover {
+          background-color: var(--dark-red);
+          transform: translateY(-1px);
+        }
       `}</style>
 
       <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
@@ -59,7 +87,15 @@ const Navbar = () => {
                 <Link className="nav-link" to="#">Contact</Link>
               </li>
               <li className="nav-item">
-                <Link to="/login" className="btn btn-outline-danger">Login</Link>
+                {isLoggedIn ? (
+                  <button className="auth-button" onClick={handleLogout}>
+                    Logout
+                  </button>
+                ) : (
+                  <Link className="auth-button text-decoration-none" to="/login">
+                    Login
+                  </Link>
+                )}
               </li>
             </ul>
           </div>

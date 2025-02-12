@@ -101,9 +101,9 @@ const BlogPage = () => {
 
       <header
         className="text-center py-5 text-white"
-        style={{ marginTop: '76px', backgroundColor: 'var(--rich-black)' }}
+        style={{ backgroundColor: 'var(--rich-black)' }}
       >
-        <div className="container py-5">
+        <div className="container py-4">
           <h1 className="display-4 fw-bold animate">Our Blog</h1>
           <p className="lead animate" style={{ animationDelay: '0.2s' }}>
             Discover the latest insights and updates from our team

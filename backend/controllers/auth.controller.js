@@ -16,7 +16,7 @@ async function save(req, res) {
         return res.status(201).json({message:"registration success"})
     }
     catch(err){
-        return resizeBy.status(500).json({message:"Internal Server error"})
+        return res.status(500).json({message:"Internal Server error"})
     }
 }
 
@@ -41,7 +41,7 @@ async function login(req,res) {
 
     }
     catch(err){
-        return resizeBy.status(500).json({message:"Internal Server error"})
+        return res.status(500).json({message:"Internal Server error"})
     }
     
 }
